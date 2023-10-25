@@ -936,7 +936,7 @@ rec {
         enabledFeatures = enableFeatures (crateConfig.dependencies or [ ]) expandedFeatures;
         depWithResolvedFeatures = dependency:
           let
-            packageId = dependency.packageId;
+            inherit (dependency) packageId;
             features = dependencyFeatures enabledFeatures dependency;
           in
           { inherit packageId features; };
